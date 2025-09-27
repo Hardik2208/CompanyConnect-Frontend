@@ -1,11 +1,11 @@
-// src/App.js
-import Header from './header';
+// src/App.jsx
+import React from "react";
+import Landing from "./Pages/Landing"; // import your landing page
 
 function App() {
   return (
     <div>
-      <Header />
-      {/* Your other content */}
+      <Landing />
     </div>
   );
 }
