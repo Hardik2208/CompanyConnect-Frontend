@@ -4,7 +4,7 @@ import { ChevronDown } from "lucide-react";
 const Footer = () => {
   const sections = [
     {
-      title: "Glassdoor",
+      title: "Internity",
       links: ["About / Press", "Blog", "Contact Us", "Grievance Officer - India"],
     },
     {
@@ -53,7 +53,7 @@ const Footer = () => {
           {/* Logo */}
           <div className="mb-8 lg:mb-0 lg:w-1/4">
             <span className="text-3xl font-extrabold text-green-600 tracking-tight">
-              Glassdoor
+              'Internity'
             </span>
           </div>
 
