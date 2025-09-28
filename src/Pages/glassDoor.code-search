@@ -1,0 +1,27 @@
+# Query: glassDoor
+# ContextLines: 1
+
+5 results - 3 files
+
+src\assets\components\footer.jsx:
+   6      {
+   7:       title: "Internity",
+   8        links: ["About / Press", "Blog", "Contact Us", "Grievance Officer - India"],
+
+  55              <span className="text-3xl font-extrabold text-green-600 tracking-tight">
+  56:               'Internity'
+  57              </span>
+
+src\Pages\Jobs.jsx:
+  50            <button className="mt-10 text-green-600 font-medium hover:underline">
+  51:             See what’s trending on Internity ⌄
+  52            </button>
+
+src\Pages\SalarySearch.jsx:
+   78      <div className="max-w-7xl mx-auto">
+   79:       <h2 className="text-3xl font-bold text-gray-800 mb-8">What's new at Internity</h2>
+   80        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+  216            <p>
+  217:             <span className="font-bold">NEW!</span> Dive into anonymous, candid conversations with a community of professionals like you. <span className="underline cursor-pointer hover:text-yellow-900">Fishbowl by Glassdoor</span>
+  218            </p>
