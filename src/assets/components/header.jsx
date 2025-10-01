@@ -48,7 +48,7 @@ const Header = () => {
     <header className="flex items-center justify-between px-5 py-4 bg-white border-b border-gray-200 relative">
       {/* Logo */}
       <div className="text-2xl font-black tracking-tighter text-green-600 cursor-pointer hover:scale-105 transition-transform">
-        Interscope
+        InternScope
       </div>
 
       {/* Desktop Navigation */}

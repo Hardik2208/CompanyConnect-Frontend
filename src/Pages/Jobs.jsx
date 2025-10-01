@@ -48,7 +48,7 @@ function Jobs() {
 
           {/* Trending */}
           <button className="mt-10 text-green-600 font-medium hover:underline">
-            See what’s trending on Interscope ⌄
+            See what’s trending on InternScope ⌄
           </button>
         </div>
 
