@@ -30,6 +30,7 @@ const Header = () => {
   const [showNotification, setShowNotification] = useState(false);
   const [showSearchDropdown, setShowSearchDropdown] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const searchRef = useRef();
 
   // Close dropdown when clicked outside
@@ -44,14 +45,14 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="flex items-center justify-between px-5 py-5 bg-white border-b border-gray-200 relative">
+    <header className="flex items-center justify-between px-5 py-4 bg-white border-b border-gray-200 relative">
       {/* Logo */}
       <div className="text-2xl font-black tracking-tighter text-green-600 cursor-pointer hover:scale-105 transition-transform">
-        'Internity'
+        Interscope
       </div>
 
-      {/* Navigation */}
-      <nav>
+      {/* Desktop Navigation */}
+      <nav className="hidden md:flex">
         <ul className="flex items-center gap-10">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path;
@@ -74,11 +75,10 @@ const Header = () => {
         </ul>
       </nav>
 
-      {/* Search Bar + Actions */}
+      {/* Actions + Hamburger */}
       <div className="flex items-center gap-5">
-
         {/* Search */}
-        <div className="relative" ref={searchRef}>
+        <div className="relative hidden sm:block" ref={searchRef}>
           <div
             className={`flex items-center border rounded-lg px-3 py-2 bg-white transition-shadow ${
               showSearchDropdown ? "shadow-lg" : ""
@@ -107,7 +107,7 @@ const Header = () => {
 
           {/* Dropdown */}
           {showSearchDropdown && (
-            <div className="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border z-50 transition-all duration-300 opacity-100 scale-100">
+            <div className="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border z-50">
               <div className="px-4 pt-3 pb-2 font-semibold text-gray-800 text-sm">
                 Popular Searches
               </div>
@@ -130,7 +130,7 @@ const Header = () => {
 
         {/* Notification Button */}
         <button
-          className="text-gray-600 hover:text-green-600 transition-colors relative"
+          className="text-gray-600 hover:text-green-600 transition-colors relative hidden sm:block"
           onClick={() => setShowNotification(!showNotification)}
         >
           <svg
@@ -147,7 +147,6 @@ const Header = () => {
               d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"
             />
           </svg>
-          {/* Notification Popup */}
           {showNotification && (
             <div className="absolute top-12 right-0 w-80 bg-white shadow-lg border border-gray-200 rounded-lg p-6 z-50">
               <h3 className="text-lg font-bold text-gray-800 mb-2">Notifications</h3>
@@ -166,7 +165,7 @@ const Header = () => {
         {/* Login Link */}
         <Link
           to="/login"
-          className="flex items-center gap-2 px-4 py-2 text-sm font-bold text-white bg-black rounded-lg hover:bg-gray-800 hover:scale-105 transition-transform"
+          className="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-bold text-white bg-black rounded-lg hover:bg-gray-800 hover:scale-105 transition-transform"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -184,7 +183,45 @@ const Header = () => {
           </svg>
           <span>Sign in/LogIn</span>
         </Link>
+
+        {/* Hamburger */}
+        <button
+          className="md:hidden flex flex-col gap-1"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          <span className="w-6 h-0.5 bg-gray-800"></span>
+          <span className="w-6 h-0.5 bg-gray-800"></span>
+          <span className="w-6 h-0.5 bg-gray-800"></span>
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="absolute top-full left-0 w-full bg-white border-t border-gray-200 shadow-md md:hidden z-50">
+          <ul className="flex flex-col gap-4 p-5">
+            {navItems.map((item) => (
+              <li key={item.name}>
+                <Link
+                  to={item.path}
+                  className="block text-lg font-semibold text-gray-800 hover:text-green-600"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link
+                to="/login"
+                className="block w-full px-4 py-2 text-center text-sm font-bold text-white bg-black rounded-lg hover:bg-gray-800"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Sign in / LogIn
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
     </header>
   );
 };
